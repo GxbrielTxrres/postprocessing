@@ -1,0 +1,10 @@
+.effectMenu {
+	background-color: #5655559c;
+	box-shadow: 0, 4px, 30px, #00000010;
+	backdrop-filter: 5.2px;
+	border: 1px solid #ffffff30;
+	height: 20rem;
+	width: 20rem;
+	border-radius: 15px;
+	opacity: 0.7;
+}
