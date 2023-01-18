@@ -20,7 +20,13 @@ export default function Menu(props) {
 		>
 			<planeGeometry args={[0.05, 0.1, 20, 20]} />
 			<meshBasicMaterial transparent opacity={0.65} />
-			<Html ref={textRef} center transform distanceFactor={0.25}>
+			<Html
+				ref={textRef}
+				center
+				transform
+				distanceFactor={0.25}
+				position-z={0.1}
+			>
 				{props.text}
 			</Html>
 		</mesh>
