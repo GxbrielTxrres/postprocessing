@@ -24,11 +24,16 @@ export function Effects({ option }) {
 
 	return (
 		<EffectComposer>
-			{/* <Pixelation /> */}
 			{option === 0 ? (
 				<ChromaticAberration ref={scanRef} offset={[0.02, 0.05]} />
 			) : null}
-			{option === 1 ? <Glitch /> : null}
+			{option === 1 ? (
+				<Glitch
+					delay={[0.5, 3.5]}
+					ratio={0.5}
+					mode={GlitchMode.SPORADIC}
+				/>
+			) : null}
 			{option === 2 ? <Pixelation /> : null}
 			{option === 3 ? <Scanline /> : null}
 			{option === 4 ? <DotScreen /> : null}

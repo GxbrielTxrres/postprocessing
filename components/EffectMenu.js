@@ -1,13 +1,27 @@
 import { Html } from "@react-three/drei";
 import styles from "../src/styles/Effects.module.css";
 import { Effects } from "./Effects";
-import { useState } from "react";
+import { useRef, useState } from "react";
 export default function EffectMenu() {
 	const [option, setOption] = useState();
+	const htmlRef = useRef();
 	return (
 		<>
 			<Effects option={option} />
-			<Html center className={styles.effectMenu} position={[2, 17, 0]}>
+			<Html
+				ref={htmlRef}
+				center
+				className={styles.effectMenu}
+				position={[2, 17, 0]}
+			>
+				<div
+					onClick={() => {
+						htmlRef.current.style.display = "none";
+					}}
+					style={{ position: "absolute", top: 10, left: 10 }}
+				>
+					X
+				</div>
 				<div
 					style={{
 						display: "flex",
@@ -17,7 +31,13 @@ export default function EffectMenu() {
 					}}
 				>
 					<h1 style={{ textAlign: "center" }}>Effect Menu</h1>
-
+					<button
+						onClick={() => {
+							setOption(null);
+						}}
+					>
+						Reset
+					</button>
 					<button
 						onClick={() => {
 							setOption(0);

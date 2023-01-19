@@ -4,8 +4,8 @@ import { Model } from "components/Model";
 import { Environment } from "@react-three/drei";
 import Menu from "components/Menu";
 import { useState } from "react";
-import Effects from "components/Effects";
 import EffectMenu from "components/EffectMenu";
+import { Moon } from "components/Moon";
 export default function App({ Component, pageProps }) {
 	const [wait, start] = useState(false);
 	return (
@@ -17,6 +17,7 @@ export default function App({ Component, pageProps }) {
 					background
 				></Environment>
 				<Model open={wait} />
+				<Moon open={wait} />
 				<Menu
 					close={wait}
 					start={start}

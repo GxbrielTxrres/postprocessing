@@ -25,7 +25,7 @@ export default function Menu(props) {
 				center
 				transform
 				distanceFactor={0.25}
-				position-z={0.1}
+				position-z={0.01}
 			>
 				{props.text}
 			</Html>

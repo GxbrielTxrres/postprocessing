@@ -6,7 +6,7 @@ source: https://sketchfab.com/3d-models/trippy-thinker-5f56f4c02624427f8c9e6d643
 title: Trippy Thinker
 */
 import { DoubleSide } from "three";
-import React, { use, useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
 	PerspectiveCamera,
 	useGLTF,
@@ -14,18 +14,25 @@ import {
 	MeshTransmissionMaterial,
 } from "@react-three/drei";
 import gsap from "gsap";
+import { useFrame } from "@react-three/fiber";
 
 export function Model(props) {
 	const camera = useRef();
+	const sphereRef = useRef();
 
 	function openMenu() {
 		gsap.to(camera.current.position, {
 			x: 5.21,
-			y: 20,
+			y: 0,
 			z: -25,
-			duration: 3.5,
+			duration: 5.5,
 		});
 	}
+
+	useFrame((state) => {
+		sphereRef.current.rotation.x = Math.cos(state.clock.elapsedTime * 0.25);
+		sphereRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.25);
+	});
 
 	if (props.open) {
 		openMenu();
@@ -34,7 +41,7 @@ export function Model(props) {
 	const { nodes, materials } = useGLTF("/trippy_thinker.glb");
 	return (
 		<group {...props} dispose={null}>
-			<mesh position={[2.5, 10, -2]}>
+			<mesh ref={sphereRef} position={[2.5, 10, -2]}>
 				<sphereGeometry args={[2.5, 32, 16]} />
 				<MeshTransmissionMaterial
 					transparent={true}
